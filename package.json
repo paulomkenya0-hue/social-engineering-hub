@@ -1,0 +1,13 @@
+{
+  "name": "social-engineering-hub",
+  "version": "1.0.0",
+  "description": "Mobile phishing kit for WhatsApp/Gmail capture",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["phishing", "termux"],
+  "author": "paulomkenya0-hue",
+  "license": "MIT"
+}
+EOF
